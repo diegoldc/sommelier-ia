@@ -7,6 +7,7 @@ import { dishesRouter } from "./routes/dishes.routes.js";
 import { winesRouter } from "./routes/wines.routes.js";
 import { publicRouter } from "./routes/public.routes.js";
 import { recommendRouter } from "./routes/recommend.routes.js";
+import { devRouter } from "./routes/dev.routes.js";
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use("/api/dishes", dishesRouter);
 app.use("/api/wines", winesRouter);
 app.use("/api/public", publicRouter);
 app.use("/api/recommend", recommendRouter);
+app.use("/api/dev", devRouter);
 
 const PORT = process.env.PORT || 4000;
 
