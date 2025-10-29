@@ -18,13 +18,15 @@ winesRouter.get('/', authRequired, async (req, res) => {
 /** POST /api/wines — crea un vino */
 winesRouter.post('/', authRequired, async (req, res) => {
   try {
-    const { name, type, body, description, pairingNotes, available } = req.body;
+    const { name, type, body, acidity, priceEUR, description, pairingNotes, available } = req.body;
 
     const wine = await Wine.create({
       restaurantId: req.restaurant._id,
       name,
       type,       // 'tinto' | 'blanco' | 'rosado' | 'espumoso'
       body,       // 'ligero' | 'medio' | 'intenso'
+      acidity,    // 'baja' | 'media' | 'alta'
+      priceEUR,
       description,
       pairingNotes,
       available

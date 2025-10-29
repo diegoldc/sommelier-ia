@@ -5,6 +5,8 @@ import { connectDB } from "./config/db.js";
 import { authRouter } from "./routes/auth.routes.js";
 import { dishesRouter } from "./routes/dishes.routes.js";
 import { winesRouter } from "./routes/wines.routes.js";
+import { publicRouter } from "./routes/public.routes.js";
+import { recommendRouter } from "./routes/recommend.routes.js";
 
 dotenv.config();
 
@@ -21,6 +23,8 @@ app.get("/health", (req, res) => {
 app.use("/api/auth", authRouter);
 app.use("/api/dishes", dishesRouter);
 app.use("/api/wines", winesRouter);
+app.use("/api/public", publicRouter);
+app.use("/api/recommend", recommendRouter);
 
 const PORT = process.env.PORT || 4000;
 
