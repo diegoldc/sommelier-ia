@@ -1,7 +1,9 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import { connectDB } from './config/db.js';
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import { connectDB } from "./config/db.js";
+import { authRouter } from "./routes/auth.routes.js";
+import { dishesRouter } from "./routes/dishes.routes.js";
 
 dotenv.config();
 
@@ -11,9 +13,12 @@ app.use(cors());
 app.use(express.json());
 
 // Ruta simple de prueba
-app.get('/health', (req, res) => {
-  res.json({ ok: true, message: 'Servidor funcionando' });
+app.get("/health", (req, res) => {
+  res.json({ ok: true, message: "Servidor funcionando" });
 });
+
+app.use("/api/auth", authRouter);
+app.use("/api/dishes", dishesRouter);
 
 const PORT = process.env.PORT || 4000;
 
